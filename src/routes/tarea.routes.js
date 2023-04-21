@@ -1,7 +1,7 @@
 'use strict'
 
 const {Router} = require('express');
-const { createTarea } = require('../controllers/tarea.controller');
+const { createTarea, readTarea } = require('../controllers/tarea.controller');
 const {check} = require('express-validator');
 const {validateParams} = require('../middleware/validate-params');
 
@@ -17,5 +17,6 @@ api.post('/create_tarea', [check("tareaNombre", "El nombre de la tarea es obliga
                            ],
                            createTarea);
 
+api.get('/read_tarea', readTarea);
 
 module.exports = api;

@@ -28,6 +28,25 @@ const createTarea = async (req, res) => {
     }
 }
 
+const readTarea = async (req, res) => {
+    try{
+        const tareas = await Tarea.find();
+        if(!tareas){
+            res.status(400).send({
+                message: "No hay tareas disponibles por el momento..."
+            });
+        }else{
+            res.status(200).send({
+                "Tareas Encontradas": tareas
+            });
+        }
+
+    }catch(err){
+        throw new Error(err);
+    }
+}
+
 module.exports = {
-    createTarea
+    createTarea,
+    readTarea
 }
